@@ -31,8 +31,8 @@ function round() {
 
     }
     let results = makeDecision(userChoice);
-    console.log(`You chose ${userChoice},`)
-    console.log(`Computer chose ${comChoice},`)
+    console.log(`You chose ${userChoice}.`)
+    console.log(`Computer chose ${comChoice}.`)
     if (results === "com") {
         console.log("You lost!");
     }
@@ -44,11 +44,39 @@ function round() {
         console.log("Its a tie");
     }
 
+    return results;
+
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        round();
+    // Five rounds. If either win 3 they auto win. Ties don't matter
+    let compScore = 0;
+    let userScore = 0;
+    let results;
+    let running = true;
+    while (running) {
+        results = round();
+        if (results === "user") {
+            userScore++;
+        }
+        else if (results === "com") {
+            compScore++;
+        }
+
+        if (userScore == 3) {
+            console.log("You win!")
+            running = false;
+        }
+
+        else if (compScore == 3) {
+            console.log("You lose :( Try Again")
+            running = false;
+        }
+
+        console.log(`Your points: ${userScore}`);
+        console.log(`Com points: ${compScore}`);
+        
+
     }
 
 }
