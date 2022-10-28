@@ -1,10 +1,10 @@
 const WEAPONS = ["paper", "scissors", "rock"]; //Winner on the right looping around
 
-let comChoice;
 
-function makeDecision(userChoice) {
+
+function playRound(userChoice) {
     let winner;
-    comChoice = WEAPONS[Math.floor(Math.random() * WEAPONS.length)];
+    let comChoice = WEAPONS[Math.floor(Math.random() * WEAPONS.length)];
 
 
     userChoiceIndex = WEAPONS.indexOf(userChoice);
@@ -14,10 +14,7 @@ function makeDecision(userChoice) {
         winner = (comChoiceIndex === (userChoiceIndex + 1) % 3) ? "com" : "user";
     }
 
-    return winner;
-}
 
-function round() {
     let invalid = true;
     while (invalid) {
         userChoice = prompt("Choose your weapon (Rock/Paper/Scissors)").toLowerCase();
@@ -30,9 +27,10 @@ function round() {
 
 
     }
-    let results = makeDecision(userChoice);
+
     console.log(`You chose ${userChoice}.`)
     console.log(`Computer chose ${comChoice}.`)
+
     if (results === "com") {
         console.log("You lost!");
     }
@@ -44,9 +42,10 @@ function round() {
         console.log("Its a tie");
     }
 
-    return results;
+    
 
 }
+
 
 function game() {
     // Five rounds. If either win 3 they auto win. Ties don't matter
@@ -55,7 +54,7 @@ function game() {
     let results;
     let running = true;
     while (running) {
-        results = round();
+        results = playRound();
         if (results === "user") {
             userScore++;
         }

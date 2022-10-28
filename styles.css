@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+
+}
+.healthbar-container {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+    gap: 20vw;
+}
+
+.healthbar {
+    height: 50px;
+    width: 300px;
+    border: solid black;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.user {
+    background-color: green;
+}
+
+.com {
+    background-color: red;
+}
+.weapons-container {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10vw;
+    
+    
+}
+
+.weapon {
+    border: solid black;
+    width: 200px;
+    height: 200px;
+    flex: 0 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
