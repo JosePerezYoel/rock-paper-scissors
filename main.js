@@ -1,84 +1,89 @@
 const WEAPONS = ["paper", "scissors", "rock"]; //Winner on the right looping around
+let userHealth = 100;
+let comHealth = 100;
 
 
 
-function playRound(userChoice) {
-    let winner;
+
+function playRound(e) {
+    if(!e.target.classList.contains('weapon')) return;
+    let userChoice = (e.target.textContent).toLowerCase();
+
     let comChoice = WEAPONS[Math.floor(Math.random() * WEAPONS.length)];
+    let winner;
 
 
-    userChoiceIndex = WEAPONS.indexOf(userChoice);
-    comChoiceIndex = WEAPONS.indexOf(comChoice);
-
-    if (userChoiceIndex !== comChoiceIndex) {
-        winner = (comChoiceIndex === (userChoiceIndex + 1) % 3) ? "com" : "user";
-    }
 
 
-    let invalid = true;
-    while (invalid) {
-        userChoice = prompt("Choose your weapon (Rock/Paper/Scissors)").toLowerCase();
-        if (WEAPONS.includes(userChoice)) {
-            invalid = false;
+
+
+    if (WEAPONS.indexOf(userChoice) !== WEAPONS.indexOf(comChoice)) {
+        if (WEAPONS.indexOf(userChoice) === (WEAPONS.indexOf(comChoice) + 1) % 3) {
+            winner = 'com'
+            comHealth = comHealth-10;
         }
         else {
-            alert("Pick again. Rock paper or scissors.");
+            winner = 'user'
+            userHealth = userHealth-10;
         }
-
-
+    }
+    else {
+        winner = 'tie';
     }
 
-    console.log(`You chose ${userChoice}.`)
-    console.log(`Computer chose ${comChoice}.`)
 
-    if (results === "com") {
-        console.log("You lost!");
-    }
-    else if (results === "user") {
-        console.log("Winner!");
+    if (winner === 'tie') {
+        e.target.style.backgroundColor = 'blue';
     }
 
     else {
-        console.log("Its a tie");
+        document.querySelector(`#${comChoice}`).style.backgroundColor = 'gray';
+        e.target.style.backgroundColor = 'green';
     }
+
+
+
+    const userHealthBar = document.querySelector('.user')
+    const comHealthBar = document.querySelector('.com')
+    userHealthBar.style.backgroundImage = `linear-gradient(to right, 
+                                        rgba(0,0,0,0) ${userHealth}%, 
+                                        rgb(255, 255, 255) 0%)`;
+    comHealthBar.style.backgroundImage = `linear-gradient(to right, 
+                                        rgba(0,0,0,0) ${comHealth}%, 
+                                        rgb(255, 255, 255) 0%)`;
+    
+    
+    
+    
+    setTimeout(() => {
+        document.querySelector(`#${comChoice}`).style.backgroundColor = 'white';
+        e.target.style.backgroundColor = 'white';
+    }, '500');        
+
+    if (!userHealth) {
+        console.log('You lose')
+    }
+    else if (!comHealth) {
+        console.log('You win!')
+    }
+   
+
+}
+
+
+function startRound() {
+    let compScore = 0;
+    let userScore = 0;
+    let results;
+    let running = true;
+
+        
+    window.addEventListener('click', playRound);
+        
 
     
 
 }
 
 
-function game() {
-    // Five rounds. If either win 3 they auto win. Ties don't matter
-    let compScore = 0;
-    let userScore = 0;
-    let results;
-    let running = true;
-    while (running) {
-        results = playRound();
-        if (results === "user") {
-            userScore++;
-        }
-        else if (results === "com") {
-            compScore++;
-        }
-
-        if (userScore == 3) {
-            console.log("You win!")
-            running = false;
-        }
-
-        else if (compScore == 3) {
-            console.log("You lose :( Try Again")
-            running = false;
-        }
-
-        console.log(`Your points: ${userScore}`);
-        console.log(`Com points: ${compScore}`);
-        
-
-    }
-
-}
-
-
-game();
+startRound();

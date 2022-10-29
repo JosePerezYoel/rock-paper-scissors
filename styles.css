@@ -9,6 +9,9 @@ body{
     display: flex;
     flex-direction: column;
     gap: 100px;
+    background-color: rgb(255, 255, 255);
+
+    height: 100vh;
 
 }
 .healthbar-container {
@@ -28,12 +31,19 @@ body{
     align-items: center;
     padding-left: 20px;
 }
+
+.health {
+    background-color: black;
+}
 .user {
     background-color: green;
+    /* background-image: linear-gradient(to right, 
+                            rgba(0,0,0,0) 3%, 
+                            rgb(255, 0, 0) 0%); */
 }
 
 .com {
-    background-color: red;
+    background-color: gray;
 }
 .weapons-container {
 
@@ -53,4 +63,5 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
