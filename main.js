@@ -21,9 +21,10 @@ function playGame(e) {
             winner = 'com'
             comHealth = comHealth - 10;
             
-            userHealthBar.style.backgroundColor = 'red';
+            comHealthBar.style.backgroundColor = 'red';
+
             setTimeout(() => {
-                userHealthBar.style.backgroundColor = 'green';
+                comHealthBar.style.backgroundColor = 'gray';
             }, '200');
 
 
@@ -31,11 +32,12 @@ function playGame(e) {
         else {
             winner = 'user'
             userHealth = userHealth - 10;
-            comHealthBar.style.backgroundColor = 'red';
 
+            userHealthBar.style.backgroundColor = 'red';
             setTimeout(() => {
-                comHealthBar.style.backgroundColor = 'gray';
+                userHealthBar.style.backgroundColor = 'green';
             }, '200');
+
         }
     }
     else {
