@@ -60,11 +60,16 @@ function playRound(e) {
         e.target.style.backgroundColor = 'white';
     }, '500');        
 
+
+    const resultsScreen = document.querySelector('.results-screen')
+
     if (!userHealth) {
-        console.log('You lose')
+        resultsScreen.textContent = 'You Win!'
+        resultsScreen.style.display = 'block'
     }
     else if (!comHealth) {
-        console.log('You win!')
+        resultsScreen.textContent = 'You Lose!'
+        resultsScreen.style.display = 'block'
     }
    
 
