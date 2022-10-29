@@ -62,7 +62,8 @@ function playGame(e) {
 
     if (!userHealth) {
         resultsDiv.textContent = 'You Win!';
-        resultsScreen.style.display = 'block';
+        document.querySelector('.healthbar-container').classList.add('blur');
+        document.querySelector('.weapons-container').classList.add('blur');
         window.addEventListener("click", () => window.location.reload());
 
 
@@ -70,7 +71,8 @@ function playGame(e) {
     else if (!comHealth) {
         resultsDiv.textContent = 'You Lose!';
         resultsScreen.style.display = 'block';
-
+        document.querySelector('.healthbar-container').classList.add('blur');
+        document.querySelector('.weapons-container').classList.add('blur');
         window.addEventListener("click", () => window.location.reload());
 
     }

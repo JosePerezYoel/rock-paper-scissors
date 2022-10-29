@@ -18,6 +18,7 @@ body{
     height: 100vh;
     align-items: center;
 
+
 }
 .healthbar-container {
 
@@ -56,7 +57,10 @@ body{
     justify-content: center;
     gap: 10vw;
     
-    
+}
+
+.blur {
+    filter: blur(10px);
 }
 
 .weapon {
@@ -76,7 +80,7 @@ body{
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-
+    z-index: 10;
     text-align: center;
 }
 
