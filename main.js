@@ -6,20 +6,36 @@ let comHealth = 100;
 
 
 function playGame(e) {
+    
     if (!e.target.classList.contains('weapon')) return;
     let userChoice = (e.target.textContent).toLowerCase();
 
     let comChoice = WEAPONS[Math.floor(Math.random() * WEAPONS.length)];
     let winner;
 
+    const userHealthBar = document.querySelector('.user');
+    const comHealthBar = document.querySelector('.com');
+
     if (WEAPONS.indexOf(userChoice) !== WEAPONS.indexOf(comChoice)) {
         if (WEAPONS.indexOf(userChoice) === (WEAPONS.indexOf(comChoice) + 1) % 3) {
             winner = 'com'
             comHealth = comHealth - 10;
+            
+            userHealthBar.style.backgroundColor = 'red';
+            setTimeout(() => {
+                userHealthBar.style.backgroundColor = 'green';
+            }, '200');
+
+
         }
         else {
             winner = 'user'
             userHealth = userHealth - 10;
+            comHealthBar.style.backgroundColor = 'red';
+
+            setTimeout(() => {
+                comHealthBar.style.backgroundColor = 'gray';
+            }, '200');
         }
     }
     else {
@@ -38,8 +54,6 @@ function playGame(e) {
 
 
 
-    const userHealthBar = document.querySelector('.user')
-    const comHealthBar = document.querySelector('.com')
     userHealthBar.style.backgroundImage = `linear-gradient(to right, 
                                         rgba(0,0,0,0) ${userHealth}%, 
                                         rgb(255, 255, 255) 0%)`;
