@@ -71,12 +71,17 @@ body{
     border: solid black;
     width: 200px;
     height: 200px;
-    flex: 0 1 auto;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
+
+.weapon:hover {
+    scale: 104%;
+}
+
 
 .results-screen {
     display: none;
