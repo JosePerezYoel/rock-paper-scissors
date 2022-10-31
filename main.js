@@ -77,15 +77,16 @@ function playGame(e) {
     const blur = document.querySelector('.blur');
 
     if (!userHealth) {
-        resultsDiv.textContent = 'You Win!';
+        resultsDiv.textContent = 'You Lose!';
+        resultsScreen.style.display = 'block';
         document.querySelector('.healthbar-container').classList.add('blur');
         document.querySelector('.weapons-container').classList.add('blur');
         window.addEventListener("click", () => window.location.reload());
 
 
     }
-    else if (!comHealth) {
-        resultsDiv.textContent = 'You Lose!';
+    if (!comHealth) {
+        resultsDiv.textContent = 'You Win!';
         resultsScreen.style.display = 'block';
         document.querySelector('.healthbar-container').classList.add('blur');
         document.querySelector('.weapons-container').classList.add('blur');
