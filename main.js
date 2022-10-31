@@ -15,14 +15,19 @@ function playGame(e) {
 
     const userHealthBar = document.querySelector('.user');
     const comHealthBar = document.querySelector('.com');
+    const messages = document.querySelector('.messages');
 
+    console.log("Com" + comChoice);
+    console.log("User" + userChoice);
+    
     if (WEAPONS.indexOf(userChoice) !== WEAPONS.indexOf(comChoice)) {
         if (WEAPONS.indexOf(userChoice) === (WEAPONS.indexOf(comChoice) + 1) % 3) {
-            winner = 'com'
+            winner = 'user'
             comHealth = comHealth - 10;
             
             comHealthBar.style.backgroundColor = 'red';
 
+            messages.textContent = `Com chose ${comChoice.toUpperCase()} but you chose ${userChoice.toUpperCase()} you lose!`;
             setTimeout(() => {
                 comHealthBar.style.backgroundColor = 'gray';
             }, '200');
@@ -30,10 +35,11 @@ function playGame(e) {
 
         }
         else {
-            winner = 'user'
+            winner = 'com'
             userHealth = userHealth - 10;
 
             userHealthBar.style.backgroundColor = 'red';
+            messages.textContent = `Com chose ${comChoice.toUpperCase()} and you chose ${userChoice.toUpperCase()} you win!`;
             setTimeout(() => {
                 userHealthBar.style.backgroundColor = 'green';
             }, '200');
@@ -42,7 +48,10 @@ function playGame(e) {
     }
     else {
         winner = 'tie';
+        messages.textContent = 'Tie! Mission failed successfully!';
     }
+
+    console.log(winner);
 
 
     if (winner === 'tie') {
