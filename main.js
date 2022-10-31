@@ -27,7 +27,7 @@ function playGame(e) {
             
             comHealthBar.style.backgroundColor = 'red';
 
-            messages.textContent = `Com chose ${comChoice.toUpperCase()} but you chose ${userChoice.toUpperCase()} you lose!`;
+            messages.textContent = `Com chose ${comChoice.toUpperCase()} and you chose ${userChoice.toUpperCase()} you win!`;
             setTimeout(() => {
                 comHealthBar.style.backgroundColor = 'gray';
             }, '200');
@@ -39,7 +39,7 @@ function playGame(e) {
             userHealth = userHealth - 10;
 
             userHealthBar.style.backgroundColor = 'red';
-            messages.textContent = `Com chose ${comChoice.toUpperCase()} and you chose ${userChoice.toUpperCase()} you win!`;
+            messages.textContent = `Com chose ${comChoice.toUpperCase()} but you chose ${userChoice.toUpperCase()} you lose!`;
             setTimeout(() => {
                 userHealthBar.style.backgroundColor = 'green';
             }, '200');
